@@ -1,18 +1,26 @@
----
+version: 2
 
-machine:
-  python:
-    version: 2.7.10
-  services:
-    - docker
+jobs:
 
-dependencies:
-  pre:
-    - pip install docker
-    - pip install molecule
+  build:
 
-deployment:
-  prod:
-    branch: master
-    commands:
-      - molecule lint
+    docker:
+      - image: circleci/python:3.6.1
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      - run:
+          name: Install Molecule dependencies
+          command: |
+            sudo pip install ansible==2.7.11
+            sudo pip install molecule docker
+      - run:
+          name: Run Molecule Testing CircleCI-locally with Docker
+          command: |
+            cd docker
+            molecule lint
