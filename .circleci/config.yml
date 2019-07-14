@@ -24,4 +24,6 @@ jobs:
       - run:
           name: Run Molecule Testing CircleCI-locally with Docker
           command: |
-            molecule test
+            pwd
+            ls -la
+            env
