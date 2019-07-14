@@ -27,7 +27,7 @@ jobs:
             pwd
             ls -la
             env
-            cd .. && ln -s ${CIRCLE_PROJECT_REPONAME} checkout && cd ${CIRCLE_PROJECT_REPONAME}
+            cd .. && ln -s checkout ${CIRCLE_PROJECT_REPONAME} && cd ${CIRCLE_PROJECT_REPONAME}
             ls -la .
             ls -la ..
             molecule test
