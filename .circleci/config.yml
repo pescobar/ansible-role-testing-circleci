@@ -28,4 +28,6 @@ jobs:
             ls -la
             env
             cd .. && ln -s ${CIRCLE_PROJECT_REPONAME} checkout && cd ${CIRCLE_PROJECT_REPONAME}
+            ls -la .
+            ls -la ..
             molecule test
