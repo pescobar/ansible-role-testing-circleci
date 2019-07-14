@@ -9,7 +9,7 @@ jobs:
     docker:
       - image: circleci/python:3.6.1
 
-    working_directory: ~/ansible-role-testing-circleci
+    working_directory: ~/checkout
 
     steps:
       - checkout
@@ -27,4 +27,5 @@ jobs:
             pwd
             ls -la
             env
+            cd .. && ln -s ${CIRCLE_PROJECT_REPONAME} checkout && cd ${CIRCLE_PROJECT_REPONAME}
             molecule test
